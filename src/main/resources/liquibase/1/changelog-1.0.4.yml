@@ -1,0 +1,44 @@
+databaseChangeLog:
+  - changeSet:
+      id: Users table
+      author: Hasan Aliyev
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    remarks: id of users
+              - column:
+                  name: name
+                  type: varchar(64)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: surname
+                  type: varchar(64)
+              - column:
+                  name: email
+                  type: varchar(128)
+              - column:
+                  name: phone
+                  type: varchar(32)
+              - column:
+                  name: address
+                  type: varchar(256)
+              - column:
+                  name: password
+                  type: varchar(128)
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP

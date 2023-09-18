@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - changeSet:
+      id: Advertisements table
+      author: Hasan Aliyev
+      changes:
+        - createTable:
+            tableName: advertisements
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    remarks: id of advertisements
+              - column:
+                  name: type
+                  type: varchar(32)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: image
+                  type: text
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: file_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_advertisements_to_products
+                    references: products(id)
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
